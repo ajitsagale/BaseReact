@@ -4,14 +4,22 @@ import { AppDispatch } from '../../../store/store';
 import { login } from '../store/authSlice';
 import { TextField, Button, Box, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
-    dispatch(login({ username, password }));
+    dispatch(login({ username, password }))
+      .then(() => {
+        navigate('/dashboard');
+      })
+      .catch((error) => {
+        console.error('Login failed:', error);
+      });
   };
 
   return (
