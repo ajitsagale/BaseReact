@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Box, AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemText, CssBaseline, Container, Typography, useMediaQuery, useTheme, Backdrop } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Outlet, Link } from 'react-router-dom';
+import ProfileMenu from './ProfileMenu';
 
 const drawerWidth = 240;
 
@@ -27,7 +28,7 @@ const AuthenticatedLayout: React.FC = () => {
   );
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '80vh'  }}>
       <CssBaseline />
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar>
@@ -43,7 +44,10 @@ const AuthenticatedLayout: React.FC = () => {
           <Typography variant="h6" noWrap component="div">
             Dashboard
           </Typography>
-        </Toolbar>
+          <Box sx={{ marginLeft: 'auto' }} >
+          <ProfileMenu />
+            </Box>
+          </Toolbar>
       </AppBar>
       <Box
         component="nav"
