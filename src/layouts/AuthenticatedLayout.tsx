@@ -28,7 +28,7 @@ const AuthenticatedLayout: React.FC = () => {
   );
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '80vh'  }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh'  }}>
       <CssBaseline />
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar>
@@ -49,6 +49,7 @@ const AuthenticatedLayout: React.FC = () => {
             </Box>
           </Toolbar>
       </AppBar>
+      <Box sx={{ display: 'flex', flexGrow: 1 }}>
       <Box
         component="nav"
         sx={{ width: { drawerWidth }, flexShrink: 0 }}
@@ -84,6 +85,8 @@ const AuthenticatedLayout: React.FC = () => {
       >
         <Toolbar />
         <Outlet />
+        </Box>
+        </Box>
         <Box component="footer" sx={{ py: 1, mt: 'auto', width: '100vw', backgroundColor: (theme) => theme.palette.grey[200] }}>
           <Container maxWidth="lg">
             <Typography variant="body1">
@@ -91,7 +94,6 @@ const AuthenticatedLayout: React.FC = () => {
             </Typography>
           </Container>
         </Box>
-      </Box>
     </Box>
   );
 };
