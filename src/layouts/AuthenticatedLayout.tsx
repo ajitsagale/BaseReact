@@ -12,6 +12,7 @@ const AuthenticatedLayout: React.FC = () => {
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+    console.log(mobileOpen,"mobileOpen");
   };
 
   const drawer = (
@@ -19,7 +20,7 @@ const AuthenticatedLayout: React.FC = () => {
       <Toolbar />
       <List>
         {['Dashboard', 'Graph 1', 'Graph 2', 'Graph 3', 'Graph 4'].map((text, index) => (
-          <ListItem component={Link} to={`/${text.toLowerCase().replace(' ', '-')}`} key={text}>
+          <ListItem  onClick={handleDrawerToggle} component={Link} to={`/${text.toLowerCase().replace(' ', '-')}`} key={text}>
             <ListItemText primary={text} />
           </ListItem>
         ))}
