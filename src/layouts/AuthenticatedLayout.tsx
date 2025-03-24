@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { Box, AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemText, CssBaseline, Container, Typography, useMediaQuery, useTheme, Backdrop } from '@mui/material';
+import { Box, AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemText, CssBaseline, Container, Typography, useMediaQuery, useTheme, Backdrop, Button, Grid } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Outlet, Link } from 'react-router-dom';
 import ProfileMenu from './ProfileMenu';
-
+import logo from '../assets/images/logo.png'; // Adjust the path to your logo image
+import LoginLogout from './LoginLogout';
 const drawerWidth = 240;
 
 const AuthenticatedLayout: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
-
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
     console.log(mobileOpen,"mobileOpen");
@@ -19,7 +19,7 @@ const AuthenticatedLayout: React.FC = () => {
     <div>
       <Toolbar />
       <List>
-        {['Dashboard', 'Graph 1', 'Graph 2', 'Graph 3', 'Graph 4'].map((text, index) => (
+        {['Dashboard', 'MyDocuments', 'CalendarPage', 'Graph 3', 'Graph 4'].map((text, index) => (
           <ListItem  onClick={handleDrawerToggle} component={Link} to={`/${text.toLowerCase().replace(' ', '-')}`} key={text}>
             <ListItemText primary={text} />
           </ListItem>
@@ -27,7 +27,7 @@ const AuthenticatedLayout: React.FC = () => {
       </List>
     </div>
   );
-
+  
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh'  }}>
       <CssBaseline />
@@ -42,11 +42,17 @@ const AuthenticatedLayout: React.FC = () => {
           >
             <MenuIcon />
           </IconButton>
+          <img src={logo} alt="Logo" style={{ height: '40px', marginRight: '16px', backgroundColor: 'white', padding: '4px', borderRadius: '10px' }} />
           <Typography variant="h6" noWrap component="div">
-            Dashboard
+            Aadi Technology Portal
           </Typography>
           <Box sx={{ marginLeft: 'auto' }} >
+            <Grid container>
+              <Grid xs={6}>
+              <LoginLogout/>
+          </Grid><Grid xs={6}>
           <ProfileMenu />
+          </Grid></Grid>
             </Box>
           </Toolbar>
       </AppBar>

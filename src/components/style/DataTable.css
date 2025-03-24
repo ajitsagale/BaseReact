@@ -1,0 +1,14 @@
+.table-container {
+    overflow-x: auto;
+  }
+  
+  .table-container table {
+    min-width: 600px; /* Adjust as needed */
+  }
+
+  
+  .table-container TableRow {
+    background-color: 'red'; /* Adjust as needed */
+  }
+
+  

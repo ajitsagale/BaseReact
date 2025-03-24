@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { IconButton, Menu, MenuItem, Avatar } from '@mui/material';
+import { IconButton, Menu, MenuItem, Avatar, Container} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const ProfileMenu: React.FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -26,7 +27,12 @@ const ProfileMenu: React.FC = () => {
   };
 
   return (
-    <>
+    <Container maxWidth="xs">
+      <motion.div
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
       <IconButton
         edge="end"
         aria-label="account of current user"
@@ -47,7 +53,8 @@ const ProfileMenu: React.FC = () => {
         <MenuItem onClick={handleViewProfile}>View Profile</MenuItem>
         <MenuItem onClick={handleSignOut}>Sign Out</MenuItem>
       </Menu>
-    </>
+      </motion.div>
+    </Container>
   );
 };
 
